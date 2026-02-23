@@ -1,5 +1,5 @@
 global:
-  domain: kinematics-cloud.alice-platform.com
+  domain: kinematics-cloud.alicelaw.net
 frontend:
   replicas: 2
   image: kinematics-cloud/frontend:latest

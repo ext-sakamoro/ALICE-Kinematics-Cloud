@@ -1,0 +1,6 @@
+apiVersion: v2
+name: kinematics-cloud
+description: ALICE Kinematics Cloud
+type: application
+version: 0.1.0
+appVersion: "0.1.0"

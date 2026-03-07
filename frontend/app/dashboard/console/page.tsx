@@ -107,7 +107,7 @@ export default function ConsolePage() {
             <div className="border border-border rounded-lg p-4 space-y-3">
               <h3 className="text-sm font-semibold">End Effector</h3>
               <div className="grid grid-cols-2 gap-3">
-                {result.end_effector_position && <Stat label="Position" value={(result.end_effector_position as number[]).map(v => v.toFixed(4)).join(', ')} />}
+                {result.end_effector_position != null && <Stat label="Position" value={(result.end_effector_position as number[]).map(v => v.toFixed(4)).join(', ')} />}
                 <Stat label="Time" value={`${result.elapsed_us} us`} />
               </div>
               {Array.isArray(result.joint_positions) && (

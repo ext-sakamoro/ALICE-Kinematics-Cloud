@@ -143,7 +143,7 @@ export default function ConsolePage() {
                 <Stat label="Samples" value={String(result.original_samples ?? '-')} />
                 <Stat label="Ratio" value={`${Number(result.compression_ratio ?? 0).toFixed(1)}x`} accent />
               </div>
-              {result.direction && (
+              {result.direction != null && (
                 <Stat label="Direction" value={(result.direction as number[]).map(v => v.toFixed(4)).join(', ')} />
               )}
             </div>

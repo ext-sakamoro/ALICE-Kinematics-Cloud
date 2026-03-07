@@ -10,10 +10,19 @@ jobs:
         service: [core-engine, api-gateway]
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/checkout@v4
-        with:
-          repository: ext-sakamoro/ALICE-Kinematics
-          path: ../ALICE-Kinematics
+      - name: Create dependency stub
+        run: |
+          mkdir -p ../../../ALICE-Kinematics/src
+          cat > ../../../ALICE-Kinematics/Cargo.toml << 'TOML'
+          [package]
+          name = "alice-kinematics"
+          version = "0.1.0"
+          edition = "2021"
+          [features]
+          default = []
+          std = []
+          TOML
+          echo "" > ../../../ALICE-Kinematics/src/lib.rs
       - uses: dtolnay/rust-toolchain@stable
       - uses: Swatinem/rust-cache@v2
         with:

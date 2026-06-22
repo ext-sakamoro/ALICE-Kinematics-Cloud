@@ -27,6 +27,23 @@ jobs:
       - uses: Swatinem/rust-cache@v2
         with:
           workspaces: services/${{ matrix.service }}
+      - name: Create sibling stub (avoid path_dependencies_not_reachable)
+        if: matrix.service == 'core-engine'
+        shell: bash
+        run: |
+          mkdir -p ../ALICE-Kinematics/src
+          cat > ../ALICE-Kinematics/Cargo.toml << 'TOML'
+          [package]
+          name = "alice-kinematics"
+          version = "0.1.0"
+          edition = "2021"
+          [features]
+          default = []
+          std = []
+          [lib]
+          path = "src/lib.rs"
+          TOML
+          echo "" > ../ALICE-Kinematics/src/lib.rs
       - run: cd services/${{ matrix.service }} && cargo check
       - run: cd services/${{ matrix.service }} && cargo clippy -- -D warnings
   lint-frontend:

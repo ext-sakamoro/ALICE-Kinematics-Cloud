@@ -2,17 +2,6 @@
 # SaaS template 構造 (services/core-engine + services/api-gateway + frontend)
 version: 2
 updates:
-  - package-ecosystem: cargo
-    directory: /services/core-engine
-    schedule:
-      interval: weekly
-      day: monday
-      time: "09:00"
-      timezone: Asia/Tokyo
-    open-pull-requests-limit: 3
-    ignore:
-      - dependency-name: "*"
-        update-types: ["version-update:semver-major"]
 
   - package-ecosystem: cargo
     directory: /services/api-gateway
